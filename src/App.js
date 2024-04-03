@@ -26,7 +26,6 @@ function Board() {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
-
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "×";
@@ -41,8 +40,8 @@ function Board() {
   return (
     <>
       <Items>
-        <Item className="circle is-active">○</Item>
-        <Item className="cross">×</Item>
+        <Item className={xIsNext ? "" : "isActive"}>○</Item>
+        <Item className={xIsNext ? "isActive" : ""}>×</Item>
       </Items>
       <Lboard>
         <Table>
@@ -152,6 +151,9 @@ const Item = styled.div`
   width: 100%;
   flex-grow: 1;
   padding: 8px;
+  &.isActive {
+    border-bottom: 4px solid black;
+  }
 `;
 
 const Table = styled.table`
