@@ -66,9 +66,7 @@ function Board() {
       </Lboard>
       <Lfooter>
         <State>{status}</State>
-        <div>
-          <Btn className="Restart">RESTART</Btn>
-        </div>
+        <Reload />
       </Lfooter>
     </>
   );
@@ -93,6 +91,20 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+function Reload() {
+  function loadFunc() {
+    window.location.reload();
+  }
+
+  return (
+    <div>
+      <Btn className="Restart" onClick={loadFunc}>
+        RESTART
+      </Btn>
+    </div>
+  );
 }
 
 export default function Game() {
