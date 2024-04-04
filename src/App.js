@@ -28,9 +28,9 @@ function Board() {
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = "×";
-    } else {
       nextSquares[i] = "○";
+    } else {
+      nextSquares[i] = "×";
     }
 
     setSquares(nextSquares);
@@ -40,8 +40,8 @@ function Board() {
   return (
     <>
       <Items>
-        <Item className={xIsNext ? "" : "isActive"}>○</Item>
-        <Item className={xIsNext ? "isActive" : ""}>×</Item>
+        <Item className={xIsNext ? "isActive" : ""}>○</Item>
+        <Item className={xIsNext ? "" : "isActive"}>×</Item>
       </Items>
       <Lboard>
         <Table>
@@ -126,8 +126,9 @@ export default function Game() {
 }
 
 const Html = styled.html`
-  background: v.$background-color;
-  font: 100% v.$font-stack;
+  background: white;
+  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma,
+    Sans-Serif;
   font-size: 15px;
   line-height: 1.5;
 `;
@@ -158,6 +159,7 @@ const Items = styled.div`
   justify-content: flex-start;
   font-size: 1.5rem;
   text-align: center;
+  box-sizing: border-box;
 `;
 const Item = styled.div`
   width: 100%;
