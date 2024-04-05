@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Square from "./Square";
-import CalculateWinner from "./CalculateWinner";
+import calculateWinner from "./calculateWinner";
 import Reload from "./Reload";
 
-const Lboard = styled.div`
+const BoardMain = styled.div`
   padding: 16px;
 `;
-const Lfooter = styled.div`
+const Footer = styled.div`
   text-align: center;
 `;
 
@@ -45,7 +45,7 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [count, setCount] = useState(0);
 
-  const winner = CalculateWinner(squares);
+  const winner = calculateWinner(squares);
   let status;
   if (winner) {
     status = "Win" + winner;
@@ -56,7 +56,7 @@ export default function Board() {
   }
 
   function handleClick(i) {
-    if (squares[i] || CalculateWinner(squares)) {
+    if (squares[i] || calculateWinner(squares)) {
       return;
     }
 
@@ -77,7 +77,7 @@ export default function Board() {
         <Item isActive={xIsNext}>○</Item>
         <Item isActive={!xIsNext}>×</Item>
       </Items>
-      <Lboard>
+      <BoardMain>
         <List>
           {squares.map((item, index) => {
             return (
@@ -85,11 +85,11 @@ export default function Board() {
             );
           })}
         </List>
-      </Lboard>
-      <Lfooter>
+      </BoardMain>
+      <Footer>
         <State>{status}</State>
         <Reload />
-      </Lfooter>
+      </Footer>
     </>
   );
 }
