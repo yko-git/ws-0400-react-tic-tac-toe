@@ -61,20 +61,15 @@ const Cell = styled.td`
 
 const State = styled.div`
   padding: 8px;
-  &.js-state {
-    padding: 8px;
-  }
 `;
 
-const Btn = styled.div`
+const Restart = styled.div`
   display: inline-block;
   width: 100%;
-  &.Restart {
-    border: 2px solid #000;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-  }
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 function Square({ value, onSquareClick }) {
@@ -115,9 +110,7 @@ function Reload() {
 
   return (
     <div>
-      <Btn className="Restart" onClick={loadFunc}>
-        RESTART
-      </Btn>
+      <Restart onClick={loadFunc}>RESTART</Restart>
     </div>
   );
 }
