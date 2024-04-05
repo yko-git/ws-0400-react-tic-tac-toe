@@ -14,7 +14,7 @@ const H1 = styled.h1`
   text-align: center;
 `;
 
-const Lcontainer = styled.main`
+const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,18 +24,16 @@ const Lcontainer = styled.main`
 
 export default function Game() {
   return (
-    <>
-      <Html>
-        <Lcontainer>
-          <div>
-            <header>
-              <H1>Tic Tac Toe</H1>
-            </header>
+    <Html>
+      <Container>
+        <div>
+          <header>
+            <H1>Tic Tac Toe</H1>
+          </header>
 
-            <Board />
-          </div>
-        </Lcontainer>
-      </Html>
-    </>
+          <Board />
+        </div>
+      </Container>
+    </Html>
   );
 }
