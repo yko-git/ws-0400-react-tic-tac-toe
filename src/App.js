@@ -44,14 +44,19 @@ const Item = styled.div`
   padding: 8px;
 `;
 
-const Table = styled.table`
-  background: #000;
-  border: 2px solid #fefefe;
+const List = styled.div`
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+  width: 144px;
   margin: 0 auto;
 `;
 
-const Cell = styled.td`
-  background: #fefefe;
+const Cell = styled.div`
+  box-sizing: border-box;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
   height: 48px;
   width: 48px;
   cursor: pointer;
@@ -153,25 +158,13 @@ function Board() {
         <Item isActive={!xIsNext}>×</Item>
       </Items>
       <Lboard>
-        <Table>
-          <tbody>
-            <tr className="row">
-              <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-              <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-              <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-            </tr>
-            <tr className="row">
-              <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-              <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-              <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-            </tr>
-            <tr className="row">
-              <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-              <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-              <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-            </tr>
-          </tbody>
-        </Table>
+        <List>
+          {squares.map((item, index) => {
+            return (
+              <Square value={item} onSquareClick={() => handleClick(index)} />
+            );
+          })}
+        </List>
       </Lboard>
       <Lfooter>
         <State>{status}</State>
