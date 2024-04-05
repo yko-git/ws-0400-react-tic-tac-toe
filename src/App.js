@@ -118,11 +118,14 @@ function Reload() {
 function Board() {
   const [xIsNext, setxIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const [count, setCount] = useState(0);
 
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
     status = "Win" + winner;
+  } else if (count === 9) {
+    status = "draw";
   } else {
     status = "starting";
   }
@@ -131,13 +134,14 @@ function Board() {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
+
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "○";
     } else {
       nextSquares[i] = "×";
     }
-
+    setCount(count + 1);
     setSquares(nextSquares);
     setxIsNext(!xIsNext);
   }
