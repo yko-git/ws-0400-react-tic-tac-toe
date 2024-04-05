@@ -38,12 +38,10 @@ const Items = styled.div`
   box-sizing: border-box;
 `;
 const Item = styled.div`
+  border-bottom: ${(props) => (props.isActive ? "4px solid black" : "none")};
   width: 100%;
   flex-grow: 1;
   padding: 8px;
-  &.isActive {
-    border-bottom: 4px solid black;
-  }
 `;
 
 const Table = styled.table`
@@ -154,8 +152,8 @@ function Board() {
   return (
     <>
       <Items>
-        <Item className={xIsNext ? "isActive" : ""}>○</Item>
-        <Item className={xIsNext ? "" : "isActive"}>×</Item>
+        <Item isActive={xIsNext}>○</Item>
+        <Item isActive={!xIsNext}>×</Item>
       </Items>
       <Lboard>
         <Table>
