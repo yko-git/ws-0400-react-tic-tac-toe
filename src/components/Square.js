@@ -13,10 +13,8 @@ const Cell = styled.div`
 
 export default function Square({ value, onSquareClick }) {
   return (
-    <>
-      <Cell className="square" onClick={onSquareClick}>
-        {value}
-      </Cell>
-    </>
+    <Cell className="square" onClick={onSquareClick}>
+      {value}
+    </Cell>
   );
 }
