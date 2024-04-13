@@ -24,11 +24,7 @@ const State = styled.div`
   padding: 8px;
 `;
 
-export default function Board() {
-  const [xIsNext, setxIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [count, setCount] = useState(0);
-
+function Winner({ squares, count }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -38,6 +34,13 @@ export default function Board() {
   } else {
     status = "starting";
   }
+  return <State>{status}</State>;
+}
+
+export default function Board() {
+  const [xIsNext, setxIsNext] = useState(true);
+  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [count, setCount] = useState(0);
 
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
@@ -67,7 +70,7 @@ export default function Board() {
         </List>
       </BoardMain>
       <Footer>
-        <State>{status}</State>
+        <Winner />
         <Reload />
       </Footer>
     </>
