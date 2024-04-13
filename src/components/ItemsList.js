@@ -16,7 +16,7 @@ const Item = styled.div`
   padding: 8px;
 `;
 
-export default function ItemsList(xIsNext) {
+export default function ItemsList({ xIsNext }) {
   return (
     <Items>
       <Item isActive={xIsNext}>○</Item>
