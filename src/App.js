@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Board from "./components/Board";
-import ItemsList from "./components/ItemsList";
 
 const Html = styled.html`
   background: white;
@@ -31,7 +30,6 @@ export default function Game() {
           <header>
             <H1>Tic Tac Toe</H1>
           </header>
-          <ItemsList />
           <Board />
         </div>
       </Container>

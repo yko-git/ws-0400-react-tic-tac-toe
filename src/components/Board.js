@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Square from "./Square";
 import calculateWinner from "./calculateWinner";
 import Reload from "./Reload";
+import ItemsList from "./ItemsList";
 
 const BoardMain = styled.div`
   padding: 16px;
@@ -24,7 +25,11 @@ const State = styled.div`
   padding: 8px;
 `;
 
-function Winner({ squares, count }) {
+export default function Board() {
+  const [xIsNext, setxIsNext] = useState(true);
+  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [count, setCount] = useState(0);
+
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -34,13 +39,6 @@ function Winner({ squares, count }) {
   } else {
     status = "starting";
   }
-  return <State>{status}</State>;
-}
-
-export default function Board() {
-  const [xIsNext, setxIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [count, setCount] = useState(0);
 
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
@@ -60,6 +58,7 @@ export default function Board() {
 
   return (
     <>
+      <ItemsList xIsNext={xIsNext} />
       <BoardMain>
         <List>
           {squares.map((item, index) => {
@@ -70,7 +69,7 @@ export default function Board() {
         </List>
       </BoardMain>
       <Footer>
-        <Winner />
+        <State>{status}</State>
         <Reload />
       </Footer>
     </>
