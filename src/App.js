@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import Board from "./components/Board";
 
-function App() {
+const Html = styled.html`
+  background: white;
+  font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma,
+    Sans-Serif;
+  font-size: 15px;
+  line-height: 1.5;
+`;
+
+const H1 = styled.h1`
+  font-size: 1.2rem;
+  text-align: center;
+`;
+
+const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+export default function Game() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Html>
+      <Container>
+        <div>
+          <header>
+            <H1>Tic Tac Toe</H1>
+          </header>
+          <Board />
+        </div>
+      </Container>
+    </Html>
   );
 }
-
-export default App;
