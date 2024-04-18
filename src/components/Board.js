@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Square from "./Square";
-import calculateWinner from "./calculateWinner";
+import calculateWinner from "../utils/calculateWinner";
 import Reload from "./Reload";
 import ItemsList from "./ItemsList";
 import StateBoard from "./StateBoard";
@@ -26,9 +26,10 @@ export default function Board() {
   const [xIsNext, setxIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [count, setCount] = useState(0);
+  const [judge, setJudge] = useState("starting");
 
   function handleClick(i) {
-    if (squares[i] || calculateWinner(squares)) {
+    if (squares[i] || judge !== "starting") {
       return;
     }
 
@@ -38,6 +39,15 @@ export default function Board() {
     } else {
       nextSquares[i] = "×";
     }
+
+    const winner = calculateWinner(nextSquares);
+    // debugger;
+    if (winner) {
+      setJudge("Win" + winner);
+    } else if (count === 8) {
+      setJudge("draw");
+    }
+
     setCount(count + 1);
     setSquares(nextSquares);
     setxIsNext(!xIsNext);
@@ -56,7 +66,7 @@ export default function Board() {
         </List>
       </BoardMain>
       <Footer>
-        <StateBoard count={count} squares={squares} />
+        <StateBoard judge={judge} />
         <Reload />
       </Footer>
     </>
